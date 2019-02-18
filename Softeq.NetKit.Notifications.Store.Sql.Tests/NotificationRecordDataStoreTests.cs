@@ -192,7 +192,7 @@ namespace Softeq.NetKit.Notifications.Store.Sql.Tests
             {
                 new Models.NotificationRecord
                 {
-                    Created = DateTimeOffset.Parse("25/01/2015"),
+                    Created = new DateTimeOffset(2015, 01, 25, 0,0 ,0, TimeSpan.Zero),
                     Id = new Guid("03C35FE2-3F1D-4233-A205-0324618DBC89"),
                     Event = NotificationEvent.PackageArrived,
                     OwnerUserId = userId,
@@ -200,7 +200,7 @@ namespace Softeq.NetKit.Notifications.Store.Sql.Tests
                 },
                 new Models.NotificationRecord
                 {
-                    Created = DateTimeOffset.Parse("25/01/2016"),
+                    Created = new DateTimeOffset(2016, 01, 25, 0,0 ,0, TimeSpan.Zero),
                     Id = new Guid("8AFA6A0B-C0D9-4435-8D19-086546A8CBA1"),
                     Event = NotificationEvent.ArticleCreated,
                     OwnerUserId = userId,
@@ -208,7 +208,7 @@ namespace Softeq.NetKit.Notifications.Store.Sql.Tests
                 },
                 new Models.NotificationRecord
                 {
-                    Created = DateTimeOffset.Parse("25/01/2017"),
+                    Created = new DateTimeOffset(2017, 01, 25, 0,0 ,0, TimeSpan.Zero),
                     Id = new Guid("C28057D4-83C5-4C17-A6DE-03D076A20955"),
                     Event = NotificationEvent.ResetPassword,
                     OwnerUserId = userId,
@@ -216,7 +216,7 @@ namespace Softeq.NetKit.Notifications.Store.Sql.Tests
                 },
                 new Models.NotificationRecord
                 {
-                    Created = DateTimeOffset.Parse("25/01/2018"),
+                    Created = new DateTimeOffset(2018, 01, 25, 0,0 ,0, TimeSpan.Zero),
                     Id = new Guid("CE98B84E-BC47-485E-A5F3-64BA1455A3F7"),
                     Event = NotificationEvent.CommentLiked,
                     OwnerUserId = userId,

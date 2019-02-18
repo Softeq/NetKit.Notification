@@ -12,6 +12,7 @@ using Softeq.NetKit.Notifications.Service.TransportModels.Shared.Request;
 using Softeq.NetKit.Notifications.Web.Controllers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -74,13 +75,13 @@ namespace Softeq.NetKit.Notifications.Web.Tests.UnitTests
 
         [Theory]
         [Trait("Category", "Unit")]
-        [InlineData(30, "25-11-2009", null)]
-        [InlineData(50, null, "25-11-2009")]
-        [InlineData(50, "25-11-2009", "26-11-2009")]
+        [InlineData(30, "2009-11-25", null)]
+        [InlineData(50, null, "2009-11-25")]
+        [InlineData(50, "2009-11-25", "2009-11-26")]
         public async Task ListTest(int pageSize, string startTime, string endTime)
         {
-            var expectedStartTime = startTime == null ? (DateTimeOffset?)null: DateTimeOffset.Parse(startTime);
-            var expectedEndTime = endTime == null ? (DateTimeOffset?) null : DateTimeOffset.Parse(endTime);
+            var expectedStartTime = startTime == null ? (DateTimeOffset?)null: DateTimeOffset.Parse(startTime, CultureInfo.InvariantCulture);
+            var expectedEndTime = endTime == null ? (DateTimeOffset?) null : DateTimeOffset.Parse(endTime, CultureInfo.InvariantCulture);
             var service = new Mock<INotificationHistoryService>();
             var response = new NotificationSetResponse
             {

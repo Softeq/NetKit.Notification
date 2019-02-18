@@ -22,10 +22,10 @@ namespace Softeq.NetKit.Notifications.Web.Tests
 
         [Theory]
         [Trait("Category", "Unit")]
-        [InlineData("invalidFormat", "25-11-2009")]
-        [InlineData("25-11-2009", "invalidFormat")]
-        [InlineData("25-13-2009", "25-11-2009")]
-        [InlineData("25-11-2009", "25-13-2009")]
+        [InlineData("invalidFormat", "2009-11-25")]
+        [InlineData("2009-11-25", "invalidFormat")]
+        [InlineData("2009-13-25", "2009-11-25")]
+        [InlineData("2009-11-25", "2009-13-25")]
         public void WhenFormatIsInvalidThenErrorThrown(string startTime, string endTime)
         {
             Assert.Throws<ValidationException>(() => FilterHelper.CreateOptions(startTime, endTime));
@@ -40,7 +40,7 @@ namespace Softeq.NetKit.Notifications.Web.Tests
             var expectedStart = new DateTimeOffset(startTime.Year, startTime.Month, startTime.Day, startTime.Hour, startTime.Minute, startTime.Second, startTime.Offset);
             var expectedEnd = new DateTimeOffset(endTime.Year, endTime.Month, endTime.Day, endTime.Hour, endTime.Minute, endTime.Second, endTime.Offset);
 
-            var options = FilterHelper.CreateOptions(startTime.ToString(), endTime.ToString());
+            var options = FilterHelper.CreateOptions(startTime.ToString(FilterHelper.DateTimeFormat), endTime.ToString(FilterHelper.DateTimeFormat));
             
             Assert.NotNull(options);
             Assert.Equal(expectedStart, options.StartTime);
