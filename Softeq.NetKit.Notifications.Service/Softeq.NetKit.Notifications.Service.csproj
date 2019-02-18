@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="NotificationSenders\Email\Resources\LocalizationStrings.en-US.json" />
+    <None Remove="NotificationSenders\Email\Resources\LocalizationStrings.fr-FR.json" />
+    <None Remove="NotificationSenders\Email\Resources\LocalizationStrings.ru-RU.json" />
+    <None Remove="NotificationSenders\Email\Resources\Templates\BaseEmail.html" />
+    <None Remove="NotificationSenders\Email\Resources\Templates\ForgotPasswordEmailMessage.en-US.html" />
+    <None Remove="NotificationSenders\Email\Resources\Templates\ForgotPasswordEmailMessage.fr-FR.html" />
+    <None Remove="NotificationSenders\Email\Resources\Templates\ForgotPasswordEmailMessage.ru-RU.html" />
+    <None Remove="NotificationSenders\Email\Resources\Templates\PackageArrivedEmailMessage.en-US.html" />
+    <None Remove="NotificationSenders\Email\Resources\Templates\PackageArrivedEmailMessage.fr-FR.html" />
+    <None Remove="NotificationSenders\Email\Resources\Templates\PackageArrivedEmailMessage.ru-RU.html" />
+    <None Remove="NotificationSenders\Push\Resources\LocalizationStrings.en-US.json" />
+    <None Remove="NotificationSenders\Push\Resources\LocalizationStrings.fr-FR.json" />
+    <None Remove="NotificationSenders\Push\Resources\LocalizationStrings.ru-RU.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="NotificationSenders\Email\Resources\LocalizationStrings.en-US.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\LocalizationStrings.fr-FR.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\LocalizationStrings.ru-RU.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\Templates\BaseEmail.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\Templates\ForgotPasswordEmailMessage.en-US.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\Templates\ForgotPasswordEmailMessage.fr-FR.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\Templates\ForgotPasswordEmailMessage.ru-RU.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\Templates\PackageArrivedEmailMessage.en-US.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\Templates\PackageArrivedEmailMessage.fr-FR.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Email\Resources\Templates\PackageArrivedEmailMessage.ru-RU.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Push\Resources\LocalizationStrings.en-US.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Push\Resources\LocalizationStrings.fr-FR.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotificationSenders\Push\Resources\LocalizationStrings.ru-RU.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.0" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Ensure.That" Version="8.1.1" />
+    <PackageReference Include="FluentValidation" Version="8.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Softeq.NetKit.EventDrivenCommunication" Version="1.0.0" />
+    <PackageReference Include="Softeq.PushNotificationService" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NotificationServices\Softeq.NetKit.Services.EmailNotifications\Softeq.NetKit.Services.EmailNotifications.csproj" />
+    <ProjectReference Include="..\Softeq.NetKit.Notifications.Domain\Softeq.NetKit.Notifications.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

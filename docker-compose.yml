@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  softeq.netkit.notifications.web:
+    image: ${DOCKER_REGISTRY}softeqnetkitnotificationsweb
+    build:
+      context: .
+      dockerfile: Softeq.NetKit.Notifications.Web/Dockerfile

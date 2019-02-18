@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  softeq.netkit.notifications.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_HTTPS_PORT=23615
+    ports:
+      - "23615:80"
