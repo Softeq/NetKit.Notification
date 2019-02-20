@@ -25,6 +25,11 @@ namespace Softeq.NetKit.Notifications.Service.EventBus
                     QueueConfiguration = new ServiceBusPersisterQueueConnectionConfiguration
                     {
                         QueueName = config["EventBus:ServiceBus:QueueName"]
+                    },
+                    TopicConfiguration = new ServiceBusPersisterTopicConnectionConfiguration
+                    {
+                        SubscriptionName = config["EventBus:ServiceBus:SubscriptionName"],
+                        TopicName = config["EventBus:ServiceBus:TopicName"]
                     }
                 };
             }).SingleInstance();
@@ -53,6 +58,14 @@ namespace Softeq.NetKit.Notifications.Service.EventBus
             builder.RegisterType<EventBusRegistrationStartable>().
                 As<IStartable>()
                 .SingleInstance();
+
+            builder.Register(context =>
+            {
+                var config = context.Resolve<IConfiguration>();
+
+                return new EventPublishConfiguration(config["EventBus:ServiceBus:EventPublisherId"]);
+            })
+            .As<EventPublishConfiguration>();
         }
 
         private class EventBusRegistrationStartable : IStartable
