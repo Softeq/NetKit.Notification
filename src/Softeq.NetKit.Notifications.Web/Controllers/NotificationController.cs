@@ -16,7 +16,7 @@ namespace Softeq.NetKit.Notifications.Web.Controllers
 {
     [ProducesResponseType(typeof(List<ErrorDto>), 400)]
     [ProducesResponseType(typeof(List<ErrorDto>), 500)]
-    //[Authorize]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/notifications")]
     [ApiVersion("1.0")]
