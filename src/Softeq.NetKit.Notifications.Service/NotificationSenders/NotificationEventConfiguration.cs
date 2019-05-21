@@ -21,7 +21,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders
             {
                 NotificationType.SMS, new List<NotificationEventConfiguration>
                 {
-                    new NotificationEventConfiguration(NotificationEvent.PackageArrived)
+                    new NotificationEventConfiguration(NotificationEvent.SendSmsCode)
                 }
             },
             {

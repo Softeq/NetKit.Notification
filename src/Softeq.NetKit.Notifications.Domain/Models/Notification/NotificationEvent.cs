@@ -9,6 +9,7 @@ namespace Softeq.NetKit.Notifications.Domain.Models.Notification
         CommentLiked = 0,
         ResetPassword = 1,
         ArticleCreated = 2,
-        PackageArrived = 3
+        PackageArrived = 3,
+        SendSmsCode = 4
     }
 }

@@ -75,6 +75,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Softeq.NetKit.Services.SmsNotifications\Softeq.NetKit.Services.SmsNotifications.csproj" />
     <ProjectReference Include="..\NotificationServices\Softeq.NetKit.Services.EmailNotifications\Softeq.NetKit.Services.EmailNotifications.csproj" />
     <ProjectReference Include="..\Softeq.NetKit.Notifications.Domain\Softeq.NetKit.Notifications.Domain.csproj" />
   </ItemGroup>
