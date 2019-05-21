@@ -35,7 +35,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
                     {
                         { "messageResponse", messageResponse }
                     };
-                    throw new SmsSenderException($"Error while sending sms to {sms.ToNumber}0", errors);
+                    throw new SmsSenderException($"Error while sending sms to {sms.ToNumber}", errors);
                 }
             }
             catch (System.Exception e) when(!(e is SmsSenderException))

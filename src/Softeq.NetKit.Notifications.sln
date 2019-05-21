@@ -8,9 +8,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softeq.NetKit.Notifications.Web", "Softeq.NetKit.Notifications.Web\Softeq.NetKit.Notifications.Web.csproj", "{06880A37-669B-434D-A523-015E004FFB4B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softeq.NetKit.Notifications.Service", "Softeq.NetKit.Notifications.Service\Softeq.NetKit.Notifications.Service.csproj", "{8B473223-9427-4BDA-B025-0119D59CBF78}"
-	ProjectSection(ProjectDependencies) = postProject
-		{574D03BB-F609-486F-A439-907E898D3384} = {574D03BB-F609-486F-A439-907E898D3384}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softeq.NetKit.Notifications.Domain", "Softeq.NetKit.Notifications.Domain\Softeq.NetKit.Notifications.Domain.csproj", "{0B35D304-4611-4B32-8B2D-2AD5CCFD9328}"
 EndProject
@@ -32,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softeq.NetKit.Notifications
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softeq.NetKit.Notifications.Store.Sql.Tests", "Softeq.NetKit.Notifications.Store.Sql.Tests\Softeq.NetKit.Notifications.Store.Sql.Tests.csproj", "{872E42B5-2888-40C4-B3D9-A811C93FCAB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softeq.NetKit.Services.SmsNotifications", "..\Softeq.NetKit.Services.SmsNotifications\Softeq.NetKit.Services.SmsNotifications.csproj", "{574D03BB-F609-486F-A439-907E898D3384}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softeq.NetKit.Services.SmsNotifications", "NotificationServices\Softeq.NetKit.Services.SmsNotifications\Softeq.NetKit.Services.SmsNotifications.csproj", "{971ECB7E-35E3-49AC-81BE-4F1A07519DB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,10 +85,10 @@ Global
 		{872E42B5-2888-40C4-B3D9-A811C93FCAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{872E42B5-2888-40C4-B3D9-A811C93FCAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{872E42B5-2888-40C4-B3D9-A811C93FCAB2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{574D03BB-F609-486F-A439-907E898D3384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{574D03BB-F609-486F-A439-907E898D3384}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{574D03BB-F609-486F-A439-907E898D3384}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{574D03BB-F609-486F-A439-907E898D3384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{971ECB7E-35E3-49AC-81BE-4F1A07519DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{971ECB7E-35E3-49AC-81BE-4F1A07519DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{971ECB7E-35E3-49AC-81BE-4F1A07519DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{971ECB7E-35E3-49AC-81BE-4F1A07519DB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,7 +96,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{92CFC2F7-0A5B-4594-B24B-88BC06F84C65} = {011B1381-FC46-4106-AA46-C53D805A9594}
 		{0CECC56D-2868-4E69-BBE3-CD7ACF62DA5D} = {011B1381-FC46-4106-AA46-C53D805A9594}
-		{574D03BB-F609-486F-A439-907E898D3384} = {011B1381-FC46-4106-AA46-C53D805A9594}
+		{971ECB7E-35E3-49AC-81BE-4F1A07519DB0} = {011B1381-FC46-4106-AA46-C53D805A9594}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBC0F959-D383-411C-BA03-0BC9EE8577A2}
