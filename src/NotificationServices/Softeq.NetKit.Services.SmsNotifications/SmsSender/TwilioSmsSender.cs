@@ -10,13 +10,23 @@ using Twilio.Rest.Api.V2010.Account;
 
 namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
 {
-    class TwilioSmsSender : ISmsSender
+    public class TwilioSmsSender : ISmsSender
     {
         private readonly TwilioSmsConfiguration _twilioSmsConfiguration;
         public TwilioSmsSender(TwilioSmsConfiguration twilioSmsConfiguration)
         {
             _twilioSmsConfiguration = twilioSmsConfiguration;
-           TwilioClient.Init(twilioSmsConfiguration.AccountSid, twilioSmsConfiguration.AuthToken);
+            InitTwilioClient();
+        }
+
+        private void InitTwilioClient()
+        {
+            if (string.IsNullOrEmpty(_twilioSmsConfiguration.AccountSid) || string.IsNullOrEmpty(_twilioSmsConfiguration.AuthToken) || string.IsNullOrEmpty(_twilioSmsConfiguration.FromNumber))
+            {
+                throw new SmsSenderException($"Error while sending sms. Config file does not contain one or more parameters for twilio client!");
+            }
+
+            TwilioClient.Init(_twilioSmsConfiguration.AccountSid, _twilioSmsConfiguration.AuthToken);
         }
 
         public async Task SendAsync(SendSmsDto sms)
