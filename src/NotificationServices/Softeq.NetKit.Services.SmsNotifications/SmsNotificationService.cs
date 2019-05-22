@@ -24,10 +24,10 @@ namespace Softeq.NetKit.Services.SmsNotifications
                 throw new ArgumentNullException(nameof(message));
             }
 
-            await _smsSender.SendAsync(new SendSmsDto()
+            await _smsSender.SendAsync(new SmsDto()
             {
                 Text = message.Text,
-                ToNumber = message.Recipient
+                ToNumber = message.RecipientPhoneNumber
             });
         }
     }

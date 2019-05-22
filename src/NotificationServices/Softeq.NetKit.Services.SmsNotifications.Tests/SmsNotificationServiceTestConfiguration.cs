@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿// Developed by Softeq Development Corporation
+// http://www.softeq.com
+
+using System.IO;
 using Microsoft.Extensions.Configuration;
 
 namespace Softeq.NetKit.Services.SmsNotifications.Tests
@@ -6,6 +9,8 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
     public class SmsNotificationServiceTestConfiguration
     {
         public TwilioSmsConfiguration Configuration { get; set; }
+        public string RecipientPhoneNumber { get; set; }
+
         public SmsNotificationServiceTestConfiguration()
         {
             var builder = new ConfigurationBuilder()
@@ -20,6 +25,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
                 AuthToken = config["Notifications:Sms:Twilio:AuthToken"],
                 FromNumber = config["Notifications:Sms:Twilio:FromNumber"]
             };
+            RecipientPhoneNumber = config["Notifications:Sms:Twilio:RecipientPhoneNumber"];
         }
     }
 }

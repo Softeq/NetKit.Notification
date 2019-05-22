@@ -15,6 +15,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
     internal class SmsNotificationSender : BaseNotificationSender<ISmsNotification>
     {
         private readonly ISmsNotificationService _sender;
+        protected override NotificationType SenderType => NotificationType.SMS;
 
         public SmsNotificationSender(ISmsNotificationService sender,
             IMessageFactory<ISmsNotification> messageFactory,
@@ -24,7 +25,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
             _sender = sender;
         }
 
-        protected override async Task PerformSending(ISmsNotification message, UserSettings settings, NotificationSendingResult result)
+        protected override async Task PerformSendingAsync(ISmsNotification message, UserSettings settings, NotificationSendingResult result)
         {
             try
             {
@@ -36,8 +37,6 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
                 result.Errors.Add("Unspecified error");
             }
         }
-
-        protected override NotificationType SenderType => NotificationType.SMS;
 
         protected override bool ShouldSend(NotificationEvent @event, UserSettings settings, NotificationSendingResult result)
         {

@@ -5,7 +5,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.Abstract
 {
     public interface ISmsNotification
     {
-        string Recipient { get; set; }
+        string RecipientPhoneNumber { get; set; }
         string Text { get; set; }
     }
 }

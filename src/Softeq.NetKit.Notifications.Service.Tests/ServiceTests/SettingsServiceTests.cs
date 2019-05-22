@@ -271,13 +271,13 @@ namespace Softeq.NetKit.Notifications.Service.Tests.ServiceTests
                 {
                     new NotificationSetting(NotificationType.Push, NotificationEvent.ArticleCreated, true),
                     new NotificationSetting(NotificationType.Email, NotificationEvent.PackageArrived, true),
-                    new NotificationSetting(NotificationType.SMS, NotificationEvent.SendSmsCode, true),
+                    new NotificationSetting(NotificationType.SMS, NotificationEvent.SmsSent, true),
                 }
             };
 
             var missingSettings = new List<NotificationSetting>
             {
-                new NotificationSetting(NotificationType.SMS, NotificationEvent.SendSmsCode, true)
+                new NotificationSetting(NotificationType.SMS, NotificationEvent.SmsSent, true)
             };
 
             var request = new UpdateNotificationSettingsRequest
@@ -306,7 +306,7 @@ namespace Softeq.NetKit.Notifications.Service.Tests.ServiceTests
                     new NotificationSettingModel
                     {
                         Type = NotificationType.SMS,
-                        Event =  NotificationEvent.SendSmsCode,
+                        Event =  NotificationEvent.SmsSent,
                         Enabled = true
                     }
                 }

@@ -25,11 +25,11 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
             {
                 throw new SmsSenderException($"Error while sending sms. Config file does not contain one or more parameters for twilio client!");
             }
-
+            
             TwilioClient.Init(_twilioSmsConfiguration.AccountSid, _twilioSmsConfiguration.AuthToken);
         }
 
-        public async Task SendAsync(SendSmsDto sms)
+        public async Task SendAsync(SmsDto sms)
         {
             try
             {

@@ -8,6 +8,6 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
 {
     public interface ISmsSender
     {
-        Task SendAsync(SendSmsDto sms);
+        Task SendAsync(SmsDto sms);
     }
 }

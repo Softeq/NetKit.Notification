@@ -17,7 +17,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
     {
         private static readonly Dictionary<NotificationEvent, Type> registry = new Dictionary<NotificationEvent, Type>
         {
-            {NotificationEvent.SendSmsCode, typeof(SmsMessage)}
+            {NotificationEvent.SmsSent, typeof(SmsMessage)}
         };
 
         public ISmsNotification Create(NotificationMessage message, UserProfileSettings settings)

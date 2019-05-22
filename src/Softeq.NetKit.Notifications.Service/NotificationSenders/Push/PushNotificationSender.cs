@@ -27,7 +27,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Push
 
         protected override NotificationType SenderType => NotificationType.Push;
 
-        protected override async Task PerformSending(PushNotificationMessage message, UserSettings settings, NotificationSendingResult result)
+        protected override async Task PerformSendingAsync(PushNotificationMessage message, UserSettings settings, NotificationSendingResult result)
         {
             try
             {

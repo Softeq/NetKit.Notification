@@ -11,7 +11,9 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms.Validators
         protected BaseSmsValidator()
         {
             RuleFor(message => message.Text).NotEmpty();
-            RuleFor(message => message.Recipient).NotEmpty();
+            RuleFor(message => message.RecipientPhoneNumber).NotEmpty();
+            RuleFor(message => message.Text).MaximumLength(1600).WithMessage("Maximum length for sms text is 1600 characters!");
+            RuleFor(message => message.RecipientPhoneNumber).MaximumLength(12).WithMessage("Maximum length for phone number is 12 characters!");
         }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Softeq.NetKit.Services.SmsNotifications.Models
 {
-    public class SendSmsDto
+    public class SmsDto
     {
         public string ToNumber { get; set; }
         public string Text { get; set; }

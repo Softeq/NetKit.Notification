@@ -24,7 +24,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Email
             _sender = sender;
         }
 
-        protected override async Task PerformSending(IEmailNotification message, UserSettings settings, NotificationSendingResult result)
+        protected override async Task PerformSendingAsync(IEmailNotification message, UserSettings settings, NotificationSendingResult result)
         {
             try
             {

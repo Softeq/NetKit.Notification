@@ -1,3 +1,6 @@
+// Developed by Softeq Development Corporation
+// http://www.softeq.com
+
 using Moq;
 using Softeq.NetKit.Services.SmsNotifications.Abstract;
 using Softeq.NetKit.Services.SmsNotifications.Exception;
@@ -11,7 +14,6 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
     public class SmsNotificationServiceTest : IClassFixture<SmsNotificationServiceTestConfiguration>
     {
         private const string SmsText = "smsText";
-        private const string RecipientPhoneNumber = "+375336201829";
         private readonly SmsNotificationServiceTestConfiguration _smsConfiguration;
 
         public SmsNotificationServiceTest(SmsNotificationServiceTestConfiguration smsConfiguration)
@@ -33,7 +35,6 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
                 var smsSender = new TwilioSmsSender(emptyConfig);
             });
             await Assert.ThrowsAsync<ArgumentNullException>(() => mockSmsService.SendAsync(emptySmsNotification));
-            
         }
 
         [Fact]
@@ -42,7 +43,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
         {
             var smsSender = new TwilioSmsSender(_smsConfiguration.Configuration);
             var smsService = new SmsNotificationService(smsSender);
-            var sms = new BaseSmsNotification() {Text = SmsText, Recipient = RecipientPhoneNumber };
+            var sms = new BaseSmsNotification() {Text = SmsText, RecipientPhoneNumber = _smsConfiguration.RecipientPhoneNumber };
 
             await smsService.SendAsync(sms);
         }

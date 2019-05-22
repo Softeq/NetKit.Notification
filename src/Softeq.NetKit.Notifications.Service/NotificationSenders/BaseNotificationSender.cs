@@ -46,7 +46,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders
                 return result;
             }
 
-            await PerformSending(notification, settings, result);
+            await PerformSendingAsync(notification, settings, result);
 
             return result;
         }
@@ -75,6 +75,6 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders
             return isEnabled;
         }
 
-        protected abstract Task PerformSending(TMessage message, UserSettings settings, NotificationSendingResult result);
+        protected abstract Task PerformSendingAsync(TMessage message, UserSettings settings, NotificationSendingResult result);
     }
 }
