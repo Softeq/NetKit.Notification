@@ -5,7 +5,7 @@ using Softeq.NetKit.Services.SmsNotifications.Exception;
 using Softeq.NetKit.Services.SmsNotifications.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Twilio;
+using Twilio.Clients;
 using Twilio.Rest.Api.V2010.Account;
 
 namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
@@ -13,20 +13,11 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
     public class TwilioSmsSender : ISmsSender
     {
         private readonly TwilioSmsConfiguration _twilioSmsConfiguration;
-        public TwilioSmsSender(TwilioSmsConfiguration twilioSmsConfiguration)
+        private readonly ITwilioRestClient _twilioRestClient;
+        public TwilioSmsSender(TwilioSmsConfiguration twilioSmsConfiguration, ITwilioRestClient twilioRestClient)
         {
             _twilioSmsConfiguration = twilioSmsConfiguration;
-            InitTwilioClient();
-        }
-
-        private void InitTwilioClient()
-        {
-            if (string.IsNullOrEmpty(_twilioSmsConfiguration.AccountSid) || string.IsNullOrEmpty(_twilioSmsConfiguration.AuthToken) || string.IsNullOrEmpty(_twilioSmsConfiguration.FromNumber))
-            {
-                throw new SmsSenderException($"Error while sending sms. Config file does not contain one or more parameters for twilio client!");
-            }
-            
-            TwilioClient.Init(_twilioSmsConfiguration.AccountSid, _twilioSmsConfiguration.AuthToken);
+            _twilioRestClient = twilioRestClient;
         }
 
         public async Task SendAsync(SmsDto sms)
@@ -37,7 +28,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
                 {
                     Body = sms.Text,
                     From = _twilioSmsConfiguration.FromNumber
-                });
+                }, _twilioRestClient);
 
                 if (messageResponse.Status == MessageResource.StatusEnum.Failed || messageResponse.Status == MessageResource.StatusEnum.Undelivered)
                 {

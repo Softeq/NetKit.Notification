@@ -5,6 +5,7 @@ using Autofac;
 using Microsoft.Extensions.Configuration;
 using Softeq.NetKit.Services.SmsNotifications.Abstract;
 using Softeq.NetKit.Services.SmsNotifications.SmsSender;
+using Twilio.Clients;
 
 namespace Softeq.NetKit.Services.SmsNotifications
 {
@@ -24,6 +25,7 @@ namespace Softeq.NetKit.Services.SmsNotifications
             }).SingleInstance();
             builder.RegisterType<TwilioSmsSender>().As<ISmsSender>();
             builder.RegisterType<SmsNotificationService>().As<ISmsNotificationService>();
+            builder.RegisterType<TwilioHttpClient>().As<ITwilioRestClient>();
         }
     }
 }

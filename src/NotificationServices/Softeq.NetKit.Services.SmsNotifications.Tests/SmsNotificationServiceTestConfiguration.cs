@@ -2,7 +2,10 @@
 // http://www.softeq.com
 
 using System.IO;
+using System.Net.Http;
 using Microsoft.Extensions.Configuration;
+using Softeq.NetKit.Services.SmsNotifications.SmsSender;
+using Twilio.Clients;
 
 namespace Softeq.NetKit.Services.SmsNotifications.Tests
 {
@@ -10,6 +13,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
     {
         public TwilioSmsConfiguration Configuration { get; set; }
         public string RecipientPhoneNumber { get; set; }
+        public readonly ITwilioRestClient TwilioRestClient;
 
         public SmsNotificationServiceTestConfiguration()
         {
@@ -26,6 +30,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
                 FromNumber = config["Notifications:Sms:Twilio:FromNumber"]
             };
             RecipientPhoneNumber = config["Notifications:Sms:Twilio:RecipientPhoneNumber"];
+            TwilioRestClient = new TwilioHttpClient(new HttpClient(), Configuration);
         }
     }
 }
