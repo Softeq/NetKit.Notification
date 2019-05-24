@@ -5,8 +5,8 @@ using Moq;
 using Softeq.NetKit.Services.SmsNotifications.Abstract;
 using Softeq.NetKit.Services.SmsNotifications.SmsSender;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Twilio.Clients;
 using Xunit;
 
 namespace Softeq.NetKit.Services.SmsNotifications.Tests
@@ -39,7 +39,8 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
         {
             var smsSender = new TwilioSmsSender(_smsConfiguration.Configuration, _smsConfiguration.TwilioRestClient);
             var smsService = new SmsNotificationService(smsSender);
-            var sms = new BaseSmsNotification() {Text = SmsText, RecipientPhoneNumber = _smsConfiguration.RecipientPhoneNumber };
+            var recipients = new List<string>() {_smsConfiguration.RecipientPhoneNumber};
+            var sms = new BaseSmsNotification() {Text = SmsText, RecipientPhoneNumbers = recipients};
 
             await smsService.SendAsync(sms);
         }

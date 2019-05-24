@@ -11,12 +11,12 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
     {
         private readonly ITwilioRestClient _innerClient;
 
-        public TwilioHttpClient(System.Net.Http.HttpClient httpClient, TwilioSmsConfiguration twilioSmsConfiguration)
+        public TwilioHttpClient(TwilioSmsConfiguration twilioSmsConfiguration)
         {
             _innerClient = new TwilioRestClient(
                 twilioSmsConfiguration.AccountSid,
                 twilioSmsConfiguration.AuthToken,
-                httpClient: new SystemNetHttpClient(httpClient));
+                httpClient: new SystemNetHttpClient(new System.Net.Http.HttpClient()));
         }
 
         public Response Request(Request request) => _innerClient.Request(request);

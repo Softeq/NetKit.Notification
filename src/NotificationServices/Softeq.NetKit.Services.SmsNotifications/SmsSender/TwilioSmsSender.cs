@@ -27,7 +27,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
         {
             try
             {
-                var messageResponse = await MessageResource.CreateAsync(new CreateMessageOptions(sms.ToNumber)
+                var messageResponse = await MessageResource.CreateAsync(new CreateMessageOptions(sms.RecipientPhoneNumber)
                 {
                     Body = sms.Text,
                     From = _twilioSmsConfiguration.FromNumber
@@ -39,7 +39,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
                     {
                         { "messageResponse", messageResponse }
                     };
-                    throw new SmsSenderException(string.Format(ErrorWhileSendingSmsTo, sms.ToNumber), errors);
+                    throw new SmsSenderException(string.Format(ErrorWhileSendingSmsTo, sms.RecipientPhoneNumber), errors);
                 }
             }
             catch (System.Exception e) when(!(e is SmsSenderException))

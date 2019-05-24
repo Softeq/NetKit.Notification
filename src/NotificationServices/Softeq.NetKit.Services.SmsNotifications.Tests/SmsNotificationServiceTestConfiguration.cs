@@ -30,7 +30,7 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
                 FromNumber = config[TwilioSmsConfigurationSettings.FromNumber]
             };
             RecipientPhoneNumber = config[TwilioSmsConfigurationSettings.RecipientTestPhoneNumber];
-            TwilioRestClient = new TwilioHttpClient(new HttpClient(), Configuration);
+            TwilioRestClient = new TwilioHttpClient(Configuration);
         }
     }
 }
