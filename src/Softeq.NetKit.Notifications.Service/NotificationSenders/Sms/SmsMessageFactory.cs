@@ -15,6 +15,8 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
 {
     internal class SmsMessageFactory : IMessageFactory<ISmsNotification>
     {
+        private const string EventIsNotSupportedExceptionMessage = "{0} event is not supported";
+
         private static readonly Dictionary<NotificationEvent, Type> registry = new Dictionary<NotificationEvent, Type>
         {
             {NotificationEvent.SmsSent, typeof(SmsMessage)}
@@ -24,7 +26,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
         {
             if (!registry.TryGetValue(message.Event, out var messageType))
             {
-                throw new InvalidOperationException($"{message.Event} event is not supported");
+                throw new InvalidOperationException(string.Format(EventIsNotSupportedExceptionMessage, message.Event));
             }
 
             var notification = (ISmsNotification)DynamicExtensions.ToStatic(messageType, message.Parameters);

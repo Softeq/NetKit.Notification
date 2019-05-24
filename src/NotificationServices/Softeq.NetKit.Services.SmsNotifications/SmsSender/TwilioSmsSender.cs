@@ -14,6 +14,9 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
     {
         private readonly TwilioSmsConfiguration _twilioSmsConfiguration;
         private readonly ITwilioRestClient _twilioRestClient;
+        private const string ErrorWhileSendingSms = "Error while sending sms!";
+        private const string ErrorWhileSendingSmsTo = "Error while sending sms to {0}";
+
         public TwilioSmsSender(TwilioSmsConfiguration twilioSmsConfiguration, ITwilioRestClient twilioRestClient)
         {
             _twilioSmsConfiguration = twilioSmsConfiguration;
@@ -36,12 +39,12 @@ namespace Softeq.NetKit.Services.SmsNotifications.SmsSender
                     {
                         { "messageResponse", messageResponse }
                     };
-                    throw new SmsSenderException($"Error while sending sms to {sms.ToNumber}", errors);
+                    throw new SmsSenderException(string.Format(ErrorWhileSendingSmsTo, sms.ToNumber), errors);
                 }
             }
             catch (System.Exception e) when(!(e is SmsSenderException))
             {
-                throw new SmsSenderException("Error while sending sms!", e);
+                throw new SmsSenderException(ErrorWhileSendingSms, e);
             }
         }
     }

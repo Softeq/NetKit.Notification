@@ -16,6 +16,9 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
     {
         private readonly ISmsNotificationService _sender;
         protected override NotificationType SenderType => NotificationType.SMS;
+        private const string ExceptionWhileSendingSmsMessage = "Exception while sending sms notification";
+        private const string UnspecifiedErrorMessage = "Unspecified error";
+        private const string PhoneNumberIsNotConfiguredErrorMessage = "User phone number is not configured";
 
         public SmsNotificationSender(ISmsNotificationService sender,
             IMessageFactory<ISmsNotification> messageFactory,
@@ -33,8 +36,8 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
             }
             catch (SmsSenderException ex)
             {
-                Logger.LogError(ex, "Exception while sending sms notification");
-                result.Errors.Add("Unspecified error");
+                Logger.LogError(ex, ExceptionWhileSendingSmsMessage);
+                result.Errors.Add(UnspecifiedErrorMessage);
             }
         }
 
@@ -42,7 +45,7 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
         {
             if (string.IsNullOrWhiteSpace(settings.PhoneNumber))
             {
-                result.Errors.Add("User phone number is not configured");
+                result.Errors.Add(PhoneNumberIsNotConfiguredErrorMessage);
                 return false;
             }
 

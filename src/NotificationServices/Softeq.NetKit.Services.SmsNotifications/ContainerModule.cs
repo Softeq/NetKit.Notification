@@ -18,9 +18,9 @@ namespace Softeq.NetKit.Services.SmsNotifications
                 var config = context.Resolve<IConfiguration>();
                 return new TwilioSmsConfiguration()
                 {
-                    AccountSid = config["Notifications:Sms:Twilio:AccountSid"],
-                    AuthToken = config["Notifications:Sms:Twilio:AuthToken"],
-                    FromNumber = config["Notifications:Sms:Twilio:FromNumber"]
+                    AccountSid = config[TwilioSmsConfigurationSettings.AccountSid],
+                    AuthToken = config[TwilioSmsConfigurationSettings.AuthToken],
+                    FromNumber = config[TwilioSmsConfigurationSettings.FromNumber]
                 };
             }).SingleInstance();
             builder.RegisterType<TwilioSmsSender>().As<ISmsSender>();

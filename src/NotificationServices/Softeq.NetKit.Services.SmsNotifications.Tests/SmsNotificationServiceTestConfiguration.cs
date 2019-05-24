@@ -25,11 +25,11 @@ namespace Softeq.NetKit.Services.SmsNotifications.Tests
             var config = builder.Build();
             Configuration = new TwilioSmsConfiguration
             {
-                AccountSid = config["Notifications:Sms:Twilio:AccountSid"],
-                AuthToken = config["Notifications:Sms:Twilio:AuthToken"],
-                FromNumber = config["Notifications:Sms:Twilio:FromNumber"]
+                AccountSid = config[TwilioSmsConfigurationSettings.AccountSid],
+                AuthToken = config[TwilioSmsConfigurationSettings.AuthToken],
+                FromNumber = config[TwilioSmsConfigurationSettings.FromNumber]
             };
-            RecipientPhoneNumber = config["Notifications:Sms:Twilio:RecipientPhoneNumber"];
+            RecipientPhoneNumber = config[TwilioSmsConfigurationSettings.RecipientTestPhoneNumber];
             TwilioRestClient = new TwilioHttpClient(new HttpClient(), Configuration);
         }
     }
