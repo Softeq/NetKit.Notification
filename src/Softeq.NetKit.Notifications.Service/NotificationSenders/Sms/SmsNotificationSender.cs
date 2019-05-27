@@ -8,6 +8,7 @@ using Softeq.NetKit.Notifications.Service.NotificationSenders.Abstractions;
 using Softeq.NetKit.Notifications.Service.NotificationSenders.Models;
 using Softeq.NetKit.Services.SmsNotifications.Abstract;
 using Softeq.NetKit.Services.SmsNotifications.Exception;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
@@ -34,10 +35,17 @@ namespace Softeq.NetKit.Notifications.Service.NotificationSenders.Sms
             {
                 await _sender.SendAsync(message);
             }
-            catch (SmsSenderException ex)
+            catch (SmsSenderException exception)
             {
-                Logger.LogError(ex, ExceptionWhileSendingSmsMessage);
-                result.Errors.Add(UnspecifiedErrorMessage);
+                Logger.LogError(exception, ExceptionWhileSendingSmsMessage);
+                if (exception.Errors != null && exception.Errors.Any())
+                {
+                    result.Errors.AddRange(exception.Errors.Keys);
+                }
+                else
+                {
+                    result.Errors.Add(UnspecifiedErrorMessage);
+                }
             }
         }
 
