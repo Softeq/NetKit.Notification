@@ -6,7 +6,7 @@ Softeq.NetKit.NotificationService is a RESTful microservice that allows to quick
 Service supports the following notification types: 
 1. Push via Azure Notification Hub
 2. Email via SendGrid
-3. SMS via Twilio (coming soon)
+3. SMS via Twilio
 
 API is written in ```Asp.Net Core 2.0``` and secured with ```OAuth2``` protocol. 
 ```Swashbuckle``` is enabled to provide API consumers with the documentation.
@@ -71,6 +71,7 @@ Service exposes the following APIs:
             {
                 NotificationType.SMS, new List<NotificationEventConfiguration>
                 {
+					new NotificationEventConfiguration(NotificationEvent.MyNewCustomEvent)
                 }
             },
             {
@@ -114,13 +115,29 @@ Service exposes the following APIs:
             }
         }
     ```
+	
+	* For Sms notification
+    ```csharp 
+        public class MyNewCustomEventSmsModel : ISmsNotification
+        {
+            public string CustomField { get; set; }
+        }
+
+        public class MyNewCustomEventSmsMessage : BaseSmsNotification
+        {
+            public MyNewCustomEventSmsMessage()
+            {
+                
+            }
+        }
+    ```
 
 3. Implement Validator per supported Notificationn Type under ```/NotificationSenders/NOTIFICATION_TYPE/Validators```
     * For Email notification
     ```csharp 
         internal class MyNewCustomEventEmailMessageValidator : BaseEmailValidator<MyNewCustomEventEmailMessage>
         {
-            public PackageArrivedMessageValidator()
+            public MyNewCustomEventEmailMessageValidator()
             {
                 RuleFor(x => x.TemplateModel.SomeId).NotEqual(Guid.Empty);
             }
@@ -134,6 +151,17 @@ Service exposes the following APIs:
             public MyNewCustomEventPushMessageValidator()
             {
                 RuleFor(x => x.SomeId).NotEqual(Guid.Empty);
+            }
+        }
+    ```
+	
+	* For Sms notification
+    ```csharp 
+        internal class MyNewCustomEventSmsMessageValidator : BaseSmsValidator<MyNewCustomEventSmsMessage>
+        {
+            public MyNewCustomEventSmsMessageValidator()
+            {
+                RuleFor(x => x.CustomField).NotEqual(string.Empty());
             }
         }
     ```
