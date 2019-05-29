@@ -15,6 +15,7 @@ namespace Softeq.NetKit.Notifications.Web.DI
             ConfigurePushNotificationService(builder);
 
             builder.RegisterModule(new Services.EmailNotifications.ContainerModule());
+            builder.RegisterModule(new Services.SmsNotifications.ContainerModule());
             //builder.RegisterModule(new Store.CosmosDB.ContainerModule());
             builder.RegisterModule(new Store.Sql.ContainerModule());
             builder.RegisterModule(new Service.ContainerModule());

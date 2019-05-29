@@ -1,6 +1,7 @@
 ﻿// Developed by Softeq Development Corporation
 // http://www.softeq.com
 
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -40,6 +41,12 @@ namespace Softeq.NetKit.Notifications.Service.Extensions
                     {
                         convertedValue = entry.Value;
                     }
+
+                    if (type == typeof(IEnumerable<string>) && entry.Value != null)
+                    {
+                        convertedValue = ((JArray)entry.Value).ToObject<List<string>>();
+                    }
+
                     propertyInfo.SetValue(instance, convertedValue, null);
                 }
             }

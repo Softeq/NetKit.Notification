@@ -22,6 +22,7 @@ namespace Softeq.NetKit.Notifications.Service
 
             builder.RegisterModule(new NotificationSenders.Email.ContainerModule());
             builder.RegisterModule(new NotificationSenders.Push.ContainerModule());
+            builder.RegisterModule(new NotificationSenders.Sms.ContainerModule());
             builder.RegisterModule(new EventBus.ContainerModule());
             builder.RegisterModule(new Services.Caching.ContainerModule());
         }
