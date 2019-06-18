@@ -1,4 +1,4 @@
-![Azure DevOps builds](https://img.shields.io/azure-devops/build/SofteqDevelopment/NetKit/19.svg)
+![Azure DevOps builds](https://dev.azure.com/SofteqDevelopment/NetKit/_apis/build/status/Notifications/Notifications-CI-Build)
 
 # Softeq.NetKit.NotificationService
 
@@ -127,7 +127,7 @@ Service exposes the following APIs:
         {
             public MyNewCustomEventSmsMessage()
             {
-                
+
             }
         }
     ```
@@ -172,9 +172,13 @@ Service exposes the following APIs:
 
 ## About
 
-This project is maintained by Softeq Development Corp.
-
+This project is maintained by [Softeq Development Corp.](https://www.softeq.com/)
 We specialize in .NET core applications.
+
+ - [Facebook](https://web.facebook.com/Softeq.by/)
+ - [Instagram](https://www.instagram.com/softeq/)
+ - [Twitter](https://twitter.com/Softeq)
+ - [Vk](https://vk.com/club21079655).
 
 ## Contributing
 
